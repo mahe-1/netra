@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('alarms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('type');
+            $table->string('resource');
+            $table->integer('status')->default(0);
+            $table->string('ackby')->nullable()->default(null);
+            $table->timestamp('acktime')->nullable()->default(null);
         });
     }
 

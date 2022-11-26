@@ -105,7 +105,16 @@
                                 </a>
 			    </li>
 			    @endif
+			    <!-- END : Regular menu link -->
+
+                            <!-- Regular menu link -->
+                            <li class="nav-item">
+                                <a href="/alarms" class="nav-link mininav-toggle {{{ (Route::currentRouteName() == 'alarms') ? 'active' : ''}}}"><i class="demo-pli-gear fs-5 me-2"></i>
+                                    <span class="nav-label mininav-content ms-1">Alarms</span>
+                                </a>
+                            </li>
                             <!-- END : Regular menu link -->
+
 
                         </ul>
                     </div>

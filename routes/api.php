@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/safe/status', function (Request $request){
+
+	return "1";
+});
+
+
+Route::middleware('auth:api')->post('/alarms', 'App\Http\Controllers\AlarmController@jstore');
+Route::middleware('auth:api')->get('/alarms', 'App\Http\Controllers\AlarmController@jindex');
+Route::middleware('auth:api')->get('/alarmscount', 'App\Http\Controllers\AlarmController@jcount');

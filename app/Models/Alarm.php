@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alarm extends Model
 {
-    use HasFactory;
+	use HasFactory;
+
+        protected $fillable = [
+                                'type',
+                                'resource',
+                    ];
+
 }

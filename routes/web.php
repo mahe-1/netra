@@ -29,4 +29,7 @@ Route::get('orders/create', 'App\Http\Controllers\OrderController@create');
 
 Route::get('cashbins', 'App\Http\Controllers\CashBinController@index')->name('cashbins');
 
+
+Route::get('alarms', 'App\Http\Controllers\AlarmController@index')->name('alarms');
+
 require __DIR__.'/auth.php';

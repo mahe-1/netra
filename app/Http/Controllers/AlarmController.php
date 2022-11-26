@@ -14,8 +14,34 @@ class AlarmController extends Controller
      */
     public function index()
     {
-        //
+         $alarms = Alarm::get();
+         return view('pages/alarms.index',['alarms' => $alarms]);
     }
+
+    public function jindex()
+    {
+         $alarms = Alarm::get();
+         return $alarms;
+    }
+
+    public function jcount()
+    {
+         $ac = Alarm::get()->where('status', '=', 0)->count();
+         return "".$ac;
+    }
+
+    public function jstore(Request $request)
+    {
+        $alarm = new Alarm();
+        $data = $request->only($alarm->getFillable());
+        $alarm->fill($data)->save();
+
+        return "hi";
+
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.
