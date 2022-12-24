@@ -71,6 +71,9 @@
                                             <th>ID</th>
                                             <th>Amount</th>
                                             <th>Location</th>
+                                            <th>Location Target</th>
+                                            <th>Lock Status</th>
+                                            <th>Online</th>
                                             <th>Permission</th>
                                             <th>History</th>
                                         </tr>
@@ -81,8 +84,11 @@
 					<tr>
                                             <td><a href="#" class="btn-link">{{$cb->binnum}}</a></td>
                                             <td>{{$cb->amount}}</td>
-                                            <td>{{$order->location}}</td>
-					    <td>{{$order->permision}}</td>
+                                            <td>{{$cb->location}}</td>
+					    <td>{{$cb->location_target}}</td>
+					    <td>{{$cb->locked}}</td>
+					    <td>{{$cb->online}}</td>
+					    <td>{{$cb->permission}}</td>
 					    <td><a href="#" class="btn-link">5 Transactions</a></td>
 					</tr>
 				

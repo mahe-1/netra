@@ -353,8 +353,14 @@
 
                                             <a href="#" class="list-group-item list-group-item-action mt-auto">
                                                 <i class="demo-pli-computer-secure fs-5 me-2"></i> Lock screen
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
+					    </a>
+						@auth
+							<form id="logout-form" action="{{ route('logout') }}" method="POST"
+								style="display: none;">
+								@csrf
+							</form>
+						@endauth
+                                            <a href="#" class="list-group-item list-group-item-action" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >
                                                 <i class="demo-pli-unlock fs-5 me-2"></i> Logout
                                             </a>
                                         </div>

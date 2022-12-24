@@ -3,11 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chest;
+use App\Models\CashBin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ChestController extends Controller
 {
+    
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function scanlist($id)
+    {
+	    Log::info("got scan list");
+
+	    $results = json_decode(request()->getContent(), true);
+
+	    //Log::info(print_r($results, true));
+	    $tags=array();
+
+	    if(is_array($results)){
+	    	foreach($results as $r){
+
+			Log::info("id=".$r['data']['idHex']);
+			
+			$hexid=$r['data']['idHex'];
+			array_push($tags,$hexid);
+		}
+	    }
+
+	CashBin::whereIn("tag1", $tags)->update(['location' => 'in']);
+    }
+
+
+
+
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

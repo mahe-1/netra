@@ -15,12 +15,16 @@
 				<div class="col-md-4" >
                                         <div class="mt-4 pt-3 d-flex justify-content-around">
                                                 <div class="text-center">
-                                                    <h4 class="mb-1">1,345L</h4>
+                                                    <h4 class="mb-1">5L</h4>
                                                     <small class="text-muted">Pending Credit</small>
                                                 </div>
                                                 <div class="text-center">
                                                     <h4 class="mb-1">24L</h4>
                                                     <small class="text-muted">Pending Debit</small>
+						</div>
+                                                <div class="text-center">
+                                                    <h4 class="mb-1">2L</h4>
+                                                    <small class="text-muted">Cash Out</small>
                                                 </div>
 					    </div>
 				</div>

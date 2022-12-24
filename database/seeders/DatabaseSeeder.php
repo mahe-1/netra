@@ -48,7 +48,21 @@ class DatabaseSeeder extends Seeder
             'email' => 'api@api.com',
 	    'password' => Hash::make(Str::random(60)),
             'api_token' => Str::random(60),
-        ]);
+	  ]);
+
+	 $id = DB::table('chests')->insertGetId([
+            'id' => 0,
+            'name' => 'main',
+            'address' => 'Bajirao Road, Pune',
+         ]);
+
+	 $id = DB::table('cash_bins')->insertGetId([
+	    'chest' => 0,
+            'tag1' => 'e20047153f10682146e90113',
+            'tag2' => 'A1',
+	    'binnum' => 'A1',
+	    'amount' => 500000
+         ]);
 
 
     }

@@ -18,11 +18,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/safe/status', function (Request $request){
+Route::get('/safe/lockcmd', function (Request $request){
 
-	return "1";
+	return "0";
 });
 
+
+Route::post('/chest/{id}/scanlist', 'App\Http\Controllers\ChestController@scanlist');
 
 Route::middleware('auth:api')->post('/alarms', 'App\Http\Controllers\AlarmController@jstore');
 Route::middleware('auth:api')->get('/alarms', 'App\Http\Controllers\AlarmController@jindex');
