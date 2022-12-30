@@ -107,13 +107,25 @@
 			    @endif
 			    <!-- END : Regular menu link -->
 
+			    @if(App\Helpers\Helper::isadmin() || App\Helpers\Helper::iscashadmin())
                             <!-- Regular menu link -->
                             <li class="nav-item">
                                 <a href="/alarms" class="nav-link mininav-toggle {{{ (Route::currentRouteName() == 'alarms') ? 'active' : ''}}}"><i class="demo-pli-gear fs-5 me-2"></i>
                                     <span class="nav-label mininav-content ms-1">Alarms</span>
                                 </a>
                             </li>
+			    <!-- END : Regular menu link -->
+			    @endif
+
+			    @if(App\Helpers\Helper::isadmin() || App\Helpers\Helper::iscashadmin())
+                            <!-- Regular menu link -->
+                            <li class="nav-item">
+                                <a href="/acam" class="nav-link mininav-toggle {{{ (Route::currentRouteName() == 'acam') ? 'active' : ''}}}"><i class="demo-pli-gear fs-5 me-2"></i>
+                                    <span class="nav-label mininav-content ms-1">Access Cam</span>
+                                </a>
+                            </li>
                             <!-- END : Regular menu link -->
+                            @endif
 
 
                         </ul>

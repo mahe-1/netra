@@ -1,9 +1,27 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
+     <!--       <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+	    </a>
+	-->
+
+		<div class="header__brand">
+                    <div class="brand-wrap">
+
+                        <!-- Brand logo -->
+                        <a href="/" class="brand-img stretched-link">
+                            <img src="./assets/img/logo.svg" alt="Nifty Logo" class="Nifty logo" width="40" height="40">
+                        </a>
+
+                        <!-- Brand title -->
+                        <div class="brand-title">Cash Netra</div>
+
+                        <!-- You can also use IMG or SVG instead of a text element. -->
+
+                    </div>
+                </div>
+
         </x-slot>
 
         <!-- Session Status -->

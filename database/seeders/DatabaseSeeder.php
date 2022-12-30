@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
 
 	 $id = DB::table('users')->insertGetId([
             'name' => 'Manager',
-            'email' => 'manager@gmail.com',
+            'email' => 'branch@gmail.com',
             'password' => Hash::make('rockstar@312'),
 	 ]);
 
@@ -61,9 +61,16 @@ class DatabaseSeeder extends Seeder
             'tag1' => 'e20047153f10682146e90113',
             'tag2' => 'A1',
 	    'binnum' => 'A1',
-	    'amount' => 500000
+	    'amount' => 5000000
          ]);
 
+	 $id = DB::table('cash_bins')->insertGetId([
+	    'chest' => 0,
+            'tag1' => 'e20047153d90682146d1010f',
+            'tag2' => 'A2',
+	    'binnum' => 'A2',
+	    'amount' => 2500000
+         ]);
 
     }
 }

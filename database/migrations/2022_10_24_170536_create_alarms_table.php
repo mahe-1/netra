@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('resource');
             $table->integer('status')->default(0);
             $table->string('ackby')->nullable()->default(null);
-            $table->timestamp('acktime')->nullable()->default(null);
+	    $table->timestamp('acktime')->nullable()->default(null);
+	    $table->timestamp('offtime')->nullable();
         });
     }
 

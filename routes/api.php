@@ -28,4 +28,5 @@ Route::post('/chest/{id}/scanlist', 'App\Http\Controllers\ChestController@scanli
 
 Route::middleware('auth:api')->post('/alarms', 'App\Http\Controllers\AlarmController@jstore');
 Route::middleware('auth:api')->get('/alarms', 'App\Http\Controllers\AlarmController@jindex');
-Route::middleware('auth:api')->get('/alarmscount', 'App\Http\Controllers\AlarmController@jcount');
+//Route::middleware('auth:api')->get('/alarmscount', 'App\Http\Controllers\AlarmController@jcount');
+Route::get('/alarm/count', 'App\Http\Controllers\AlarmController@jcount');

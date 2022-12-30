@@ -33,6 +33,7 @@ return new class extends Migration
 	    $table->timestamp('locked_at')->nullable();
 	    $table->string('location')->default('out');
 	    $table->string('location_target')->default('out');
+	    $table->timestamp('lchecked_at', $precision = 0)->nullable();
 	    $table->string('permission')->default('none');
         });
     }

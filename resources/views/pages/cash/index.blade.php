@@ -10,16 +10,16 @@
                     <!-- Table with toolbar -->
                     <div class="card">
                         <div class="card-header">
-			    <h5 class="card-title mb-3">Order Status</h5>
+			    <h5 class="card-title mb-3">Cash Bins</h5>
 			    <div class="row">
 				<div class="col-md-4" >
                                         <div class="mt-4 pt-3 d-flex justify-content-around">
                                                 <div class="text-center">
-                                                    <h4 class="mb-1">1,345L</h4>
+                                                    <h4 class="mb-1">{{$cashin}}</h4>
                                                     <small class="text-muted">Cash In</small>
                                                 </div>
                                                 <div class="text-center">
-                                                    <h4 class="mb-1">241</h4>
+                                                    <h4 class="mb-1">{{$count}}</h4>
                                                     <small class="text-muted">No Of Bins</small>
                                                 </div>
 					    </div>
@@ -27,12 +27,23 @@
 
 			    </div>
 				<p>&nbsp;</p>				
-                            <div class="row">
+			    <div class="row">
 
-                                <!-- Left toolbar -->
-				<div class="col-md-6 d-flex gap-1 align-items-center mb-3">
-				
-                                </div>
+				 <div class="col-md-6 d-flex gap-1 align-items-center mb-3">
+                                    <button class="btn btn-primary hstack gap-2 align-self-center" onclick="location.href = '/cashbins/request';">
+                                        <i class="demo-psi-add fs-5"></i>
+                                        <span class="vr"></span>
+                                        Request Bin Out
+                                    </button>
+                                <!--    <button class="btn btn-icon btn-outline-light" aria-label="Print table">
+                                        <i class="demo-pli-printer fs-5"></i>
+                                    </button>
+                                    <div class="btn-group">
+                                        <button class="btn btn-icon btn-outline-light" aria-label="Information"><i class="demo-pli-exclamation fs-5"></i></button>
+                                        <button class="btn btn-icon btn-outline-light" aria-label="Remove"><i class="demo-pli-recycling fs-5"></i></button>
+                                    </div>-->
+                                 </div>
+
                                 <!-- END : Left toolbar -->
 
                                 <!-- Right Toolbar -->
@@ -72,6 +83,7 @@
                                             <th>Amount</th>
                                             <th>Location</th>
                                             <th>Location Target</th>
+                                            <th>Cheked Time</th>
                                             <th>Lock Status</th>
                                             <th>Online</th>
                                             <th>Permission</th>
@@ -86,6 +98,7 @@
                                             <td>{{$cb->amount}}</td>
                                             <td>{{$cb->location}}</td>
 					    <td>{{$cb->location_target}}</td>
+					    <td>{{$cb->lchecked_at}}</td>
 					    <td>{{$cb->locked}}</td>
 					    <td>{{$cb->online}}</td>
 					    <td>{{$cb->permission}}</td>

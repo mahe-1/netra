@@ -36,8 +36,12 @@
 					    <td class="text-center fs-5">
 							@if($alarm->status == 0)
 								 <div class="d-block badge bg-info">Standing</div>
-							@else
-								 <div class="d-block badge bg-success">Acknowledged</div>
+							 @else
+								@if($alarm->status == 1)
+								 	<div class="d-block badge bg-success">Acknowledged</div>
+								@else
+									<div class="d-block badge bg-success">Closed</div>	
+								@endif
                                                         @endif
                                             </td>
 					</tr>

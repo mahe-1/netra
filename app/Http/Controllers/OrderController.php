@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\CashBin;
 use App\Helpers\Helper;
 
 
@@ -18,10 +19,14 @@ class OrderController extends Controller
     public function index()
     {
 	    $orders = Order::get();
+	    $credit = Order::where('status', '1')->where('type','credit')->sum('amount');
+	    $debit = Order::where('status', '1')->where('type','debit')->sum('amount');
+     	    $cashout = CashBin::where('location_target', 'out')->sum('amount');
+
 	    if(Helper::isbranchadmin())
 		    return view('pages/orders.index',['orders' => $orders]);
 	    else
-		    return view('pages/orders.index_cash',['orders' => $orders]);
+		    return view('pages/orders.index_cash',['credit' => $credit, 'debit' => $debit ,'cashout' => $cashout ,'orders' => $orders]);
     }
 
     /**
@@ -67,9 +72,13 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+	$order = Order::find($id);
+        if(Helper::isbranchadmin())
+        	return view('pages/orders.index',['order' => $order]);
+        else
+             	return view('pages/orders.edit_cash',['order' => $order]);
     }
 
     /**
@@ -79,9 +88,19 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update($id)
     {
-        //
+        $order = Order::find($id);
+	if(Helper::iscashadmin())
+	{
+		$status = request('status');
+		if($status){
+			$order->status = $status ;
+			$order->save();
+		}
+	}
+
+	 return redirect()->route('orders');
     }
 
     /**

@@ -17,9 +17,12 @@ class CashBinController extends Controller
     {
 	    $cashbins = CashBin::get();
 	    $count = count($cashbins);
-	    $cashin = CashBin::where('location_target', 'in')->sum('amount');
 	    
-            return view('pages/cash.index',['cashbins' => $cashbins,'count'=>$count,'cashin'=>$cashin]);
+	    $total_amount = 0;
+	    foreach($cashbins as $cb){
+		    $total_amount += $cb->amount;
+	    }
+            return view('pages/cash.index',['cashbins' => $cashbins,'count'=>$count,'total_amount'=>$total_amount]);
     }
 
        /**
@@ -31,14 +34,12 @@ class CashBinController extends Controller
     {
             $credit = Order::where('status', '1')->where('type','credit')->sum('amount');
 	    $debit = Order::where('status', '1')->where('type','debit')->sum('amount');
-	    $cashout = CashBin::where('location', 'out')->sum('amount');
-	    $credit=$credit+$cashout;
 	    $cashneed = $debit-$credit;
 	    if($cashneed>0)
 	    {
-		$bins = CashBin::orderBy('locked_at', 'DESC')->get();
+		$bins = Post::orderBy('locked_at', 'DESC')->get();
 		foreach($bins as $bin){
-			
+		{
 			$cashneed = $cashneed - $bin->amount;
 			$bin->location_target = 'out';
 			$bin->save();
@@ -47,7 +48,7 @@ class CashBinController extends Controller
 				break;
 		}
 	    }
-	     return redirect()->route('cashbins');
+            return view('pages/cash.index',['cashbins' => $cashbins,'count'=>$count,'total_amount'=>$total_amount]);
     }
 
 

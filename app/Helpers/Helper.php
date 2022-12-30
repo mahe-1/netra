@@ -37,7 +37,18 @@ class Helper
                         return false;
 
 
-        }
+	}
+
+	public static function order_status_text($s){
+		if($s==0)
+			return "Pending";
+		if($s==1)
+			return "Accepted";
+		if($s==3)
+			return "Completed";
+		if($s==2)
+			return "Rejected";
+	}
 }
 
 ?>

@@ -15,17 +15,17 @@
 				<div class="col-md-4" >
                                         <div class="mt-4 pt-3 d-flex justify-content-around">
                                                 <div class="text-center">
-                                                    <h4 class="mb-1">5L</h4>
+                                                    <h4 class="mb-1">{{$credit}}</h4>
                                                     <small class="text-muted">Pending Credit</small>
                                                 </div>
                                                 <div class="text-center">
-                                                    <h4 class="mb-1">24L</h4>
+                                                    <h4 class="mb-1">{{$debit}}</h4>
                                                     <small class="text-muted">Pending Debit</small>
 						</div>
                                                 <div class="text-center">
-                                                    <h4 class="mb-1">2L</h4>
+                                                    <h4 class="mb-1">{{$cashout}}</h4>
                                                     <small class="text-muted">Cash Out</small>
-                                                </div>
+						</div>
 					    </div>
 				</div>
 
@@ -79,6 +79,7 @@
                                             <th>Type</th>
                                             <th>Amount</th>
                                             <th class="text-center">Status</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
 				    <tbody>
@@ -92,11 +93,15 @@
                                             <td>{{$order->type}}</td>
                                             <td>{{$order->amount}}</td>
 					    <td class="text-center fs-5">
-							@if($order->status == 0)
-								 <div class="d-block badge bg-info">Pending</div>
-							@else
-								--
-                                                        @endif
+						 <div class="d-block badge bg-info">{!!Helper::order_status_text($order->status)!!}</div>
+					    </td>
+					    <td class="text-center text-nowrap">
+						<!--                                                <a class="btn btn-icon btn-sm btn-primary btn-hover" href="#"><i title="Accept"  class="demo-pli-pen-5 fs-5"></i></a>
+                                                <a class="btn btn-icon btn-sm btn-success btn-hover" href="#"><i title="Complete" class="demo-pli-pen-5 fs-5"></i></a>
+						<a class="btn btn-icon btn-sm btn-danger btn-hover" href="#"><i title="Reject" class="demo-pli-pen-5 fs-5"></i></a>
+
+						-->
+						<a href="/order/{{$order->id}}/edit"><button type="button" class="btn btn-primary">Edit</button></a>
                                             </td>
 					</tr>
 				

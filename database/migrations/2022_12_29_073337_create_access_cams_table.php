@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('access_cams', function (Blueprint $table) {
             $table->id();
-	    $table->timestamps();
-	    $table->string('branch');
-	    $table->string('manager');
-	    $table->integer('amount');
-	    $table->string('type');
-	    $table->integer('status')->default(0);
-	    $table->integer('chest')->default(0);
-	    $table->string('processedby')->default('');;
+            $table->timestamps();
         });
     }
 
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('access_cams');
     }
 };
